@@ -33,12 +33,12 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-11" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-12" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
   <!-- xml2rfc v2v3 conversion 3.12.1 -->
   <front>
     <title abbrev="BGP LLDP Peer Discovery">
    BGP Logical Link Discovery Protocol (LLDP) Peer Discovery</title>
-    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-11"/>
+    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-12"/>
     <author initials="A." surname="Lindem" fullname="Acee Lindem">
       <organization>Cisco Systems</organization>
       <address>
@@ -640,39 +640,11 @@ not authenticated or encrypted <xref target="LLDP" format="default"/>.</t>
       <name>IANA Considerations</name>
       <section numbered="true" toc="default">
         <name>IANA Assigned LLDP Subtype</name>
-        <t>IANA is requested to create a registry for IANA assigned subtypes
-      in the IETF Organizationally Specific TLV assigned to IANA (OUI of 
-      000-00-53 <xref target="RFC7042" format="default"/>. Assignment is requested
-      for 1 for the BGP Config OS-TLV.
+        <t>
+          IANA is requested to assign a code point in the IANA Link
+          Layer Discovery Protocol (LLDP) TLV Sub-Types Registry for BGP
+          configuration. The value is TBD.
         </t>
-        <figure>
-          <name>IANA LLDP IETF Organizationally Specific TLV Sub-Types</name>
-          <artwork name="" type="" align="left" alt=""><![CDATA[
-        +-------------+-----------------------------------+
-        | Range       | Assignment Policy                 |
-        +-------------+-----------------------------------+
-        | 0           | Reserved (not to be assigned)     |
-        |             |                                   |
-        | 1           | BGP Configuration                 |
-        |             |                                   |
-        | 2-127       | Unassigned (IETF Review)          |
-        |             |                                   |
-        | 128-254     | Reserved (Not to be assigned now) |
-        |             |                                   |
-        | 255         | Reserved (not to be assigned)     |
-        +-------------+-----------------------------------+
-     ]]></artwork>
-        </figure>
-        <ul spacing="normal">
-          <li>Types in the range 2-127 are to be assigned subject to
-         IETF Review.  New values are assigned only through RFCs that
-         have been shepherded through the IESG as AD-Sponsored or IETF
-         WG Documents <xref target="RFC5226" format="default"/>.</li>
-          <li>Types in the range 128-254 are reserved and not to be
-         assigned at this time.  Before any assignments can be made in
-         this range, there MUST be a Standards Track RFC that specifies
-         IANA Considerations that covers the range being assigned.</li>
-        </ul>
       </section>
       <section numbered="true" toc="default">
         <name>BGP Config LLDP OS-TLV Sub-TLVs</name>
@@ -1037,7 +1009,7 @@ Contributors' Addresses
     <section numbered="true" toc="default">
       <name>Acknowledgments</name>
       <t>Thanks to Sujay Gupta and Paul Congdon for review and comments.</t>
-      <t>The RFC text was produced using Marshall Rose's xml2rfc tool.</t>
+      <t>Thanks to Donald Eastlake for guidance on IANA LLDP TLV Subtype assignment.</t>
     </section>
   </back>
 </rfc>
