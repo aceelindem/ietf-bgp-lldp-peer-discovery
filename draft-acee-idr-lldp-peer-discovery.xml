@@ -33,12 +33,12 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-12" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-13" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
   <!-- xml2rfc v2v3 conversion 3.12.1 -->
   <front>
     <title abbrev="BGP LLDP Peer Discovery">
    BGP Logical Link Discovery Protocol (LLDP) Peer Discovery</title>
-    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-12"/>
+    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-13"/>
     <author initials="A." surname="Lindem" fullname="Acee Lindem">
       <organization>Cisco Systems</organization>
       <address>
@@ -93,22 +93,22 @@
     <date/>
     <abstract>
       <t>Link Layer Discovery Protocol (LLDP) or IEEE Std 802.1AB is implemented
-   in networking equipment from many vendors. It is natural for IETF protocols to 
+   in networking equipment from many vendors. It is natural for IETF protocols to
    avail this protocol for simple discovery tasks. This document describes how
-   BGP would use LLDP to discover directly connected and 2-hop peers when 
-   peering is based on loopback addresses. 
+   BGP would use LLDP to discover directly connected and 2-hop peers when
+   peering is based on loopback addresses.
       </t>
     </abstract>
   </front>
   <middle>
     <section numbered="true" toc="default">
       <name>Introduction</name>
-      <t>Link Layer Discovery Protocol (LLDP) <xref target="LLDP" format="default"/> 
+      <t>Link Layer Discovery Protocol (LLDP) <xref target="LLDP" format="default"/>
     or IEEE Std 802.1AB is implemented
-   in networking equipment from many vendors. It is natural for IETF protocols to 
+   in networking equipment from many vendors. It is natural for IETF protocols to
    avail this protocol for simple discovery tasks. This document describes how
-   BGP <xref target="RFC4271" format="default"/> would use LLDP to discover directly connected and 
-   2-hop peers when peering is based on loopback addresses. 
+   BGP <xref target="RFC4271" format="default"/> would use LLDP to discover directly connected and
+   2-hop peers when peering is based on loopback addresses.
       </t>
       <section numbered="true" toc="default">
         <name>Requirements Notation</name>
@@ -117,7 +117,7 @@
           <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
         NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
         "MAY", and "OPTIONAL" in this document are to be interpreted as
-        described in BCP 14 <xref target="RFC2119" format="default"/> <xref target="RFC8174" format="default"/> 
+        described in BCP 14 <xref target="RFC2119" format="default"/> <xref target="RFC8174" format="default"/>
         when, and only when, they appear in all capitals, as shown here.</t>
         </section>
       </section>
@@ -126,7 +126,7 @@
       <name>LLDP Extensions</name>
       <section anchor="LLDP-OS-TLV" numbered="true" toc="default">
         <name>LLDP IETF Organizationally Specific TLV Format</name>
-        <t>The format of the LLDP IETF Organizationally Specific TLV (OS-TLV) is defined 
+        <t>The format of the LLDP IETF Organizationally Specific TLV (OS-TLV) is defined
    in <xref target="LLDP" format="default"/>. It is shown below for completeness.
         </t>
         <figure>
@@ -137,35 +137,35 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | Type (127)  |       Length    |  OUI (3 Octets) 00-00-5E      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | OUI Continued |  Subtype      |     Value                     |    
+   | OUI Continued |  Subtype      |     Value                     |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                             ...   (Up to 507 Octets)          |
 
     Type    IETF Organizationally Specific TLV type value, 127.
 
-    Length  The length of the remainder of the TLV. 
+    Length  The length of the remainder of the TLV.
 
-    OUI     IETF Organizationally unique identifier for the 
-            organization's OUI. For IANA, this is value is 
-            00-00-5E as specified in [IEEE-802-IANA]. 
+    OUI     IETF Organizationally unique identifier for the
+            organization's OUI. For IANA, this is value is
+            00-00-5E as specified in [IEEE-802-IANA].
 
     Subtype IETF specific subtype
-   
-    Value   Value for organizationally specific TLV. The Length of 
-            the value is 4 octets less than the TLV length. 
-                                  
+
+    Value   Value for organizationally specific TLV. The Length of
+            the value is 4 octets less than the TLV length.
+
      ]]></artwork>
         </figure>
         <t>The OUI for IANA was allocated in section 1.4 of
-<xref target="RFC7042" format="default"/>. This document requests creation of a 
+<xref target="RFC7042" format="default"/>. This document requests creation of a
 registry for IETF specific sub-types for LLDP IETF Organizationally
 Specific TLVs.</t>
         <t/>
       </section>
       <section numbered="true" toc="default">
         <name>BGP Config OS-TLV Format</name>
-        <t>The BGP Config IETF Organizationally Specific TLV (OS-TLV) will 
-be used to advertise BGP configuration information. The 
+        <t>The BGP Config IETF Organizationally Specific TLV (OS-TLV) will
+be used to advertise BGP configuration information. The
 configuration information will be composed of Sub-TLVs. Since
 the length is limited to 507 octets, multiple BGP Config OS-TLVs
 could be included in a single LLDP advertisement.
@@ -174,39 +174,39 @@ could be included in a single LLDP advertisement.
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | Type (127)  |    Length       |  OUI (3 Octets) 00-5E-00      |
+   | Type (127)  |    Length       |  OUI (3 Octets) 00-00-5E      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |OUI Continued  |       1       |   BGP Config Sub-TLVs  ...    |     
+   |OUI Continued  |      TBD      |   BGP Config Sub-TLVs  ...    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                             ...   (Up to 507 Octets)          |
 
 
     Length     The length of the BGP TLV.
 
-    Subtype    IETF specific subtype for BGP Config OS-TLV. The 
-               value shall be 1. 
+    Subtype    IETF specific subtype for BGP Config OS-TLV. The
+               value shall be TBD.
 
-    Value      BGP Config Sub-TLVs each with a 1 byte Type and 
-               Length. The Length will include solely the value 
+    Value      BGP Config Sub-TLVs each with a 1 byte Type and
+               Length. The Length will include solely the value
                portion of the TLV and not the Type and Length
-               fields themselves. 
-                                  
+               fields themselves.
+
      ]]></artwork>
         <t/>
         <section numbered="true" toc="default">
           <name>BGP Config OS-TLV - Peering Address Sub-TLV</name>
           <t>
 The BGP OS-TLV Peering Address Sub-TLV will be used to advertise
-the local IP addresses used for BGP sessions and the 
-associated address families specified by AFI/SAFI tuples. The 
-AFI/SAFI tuple, 0/0, indicates to use the associated peering address 
-for all locally configured address families without an explicit peering 
-address specification. As always, the address families supported for a 
-given BGP session will be determined during capabilities 
+the local IP addresses used for BGP sessions and the
+associated address families specified by AFI/SAFI tuples. The
+AFI/SAFI tuple, 0/0, indicates to use the associated peering address
+for all locally configured address families without an explicit peering
+address specification. As always, the address families supported for a
+given BGP session will be determined during capabilities
 negotiation <xref target="RFC4760" format="default"/>. It is RECOMMENDED that the
-wildcard AFI/SAFI be used in deployments with fairly 
+wildcard AFI/SAFI be used in deployments with fairly
 homogenous address family usage.</t>
-          <t>The format of the 
+          <t>The format of the
 BGP Peering Address Sub-TLV is shown below.
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
@@ -217,21 +217,21 @@ BGP Peering Address Sub-TLV is shown below.
  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  ~    IPv4/IPv6 Peering Address ...                              ~
  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |         AFI                   |     SAFI      |   o o o 
+ |         AFI                   |     SAFI      |   o o o
  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
   Type      The Sub-TLV Type value shall be 1.
 
   Length    The Sub-TLV length in octets will be 4 for IPv4 or 16
-            for IPv6 plus 3 times the number of AFI/SAFI tuples. 
+            for IPv6 plus 3 times the number of AFI/SAFI tuples.
 
-  Address  IANA Address family (1 for IPv4 or 2 for IPv6)  
+  Address  IANA Address family (1 for IPv4 or 2 for IPv6)
   Family
 
   Peering   An IPv4 address (4 octets) or an IPv6 address (16 octets)
-  Address    
+  Address
 
-  AFI/SAFI  One or more AFI/SAFI tuples for BGP session using this 
+  AFI/SAFI  One or more AFI/SAFI tuples for BGP session using this
   Pairs     peering address. The AFI/SAFI tuple, 0/0, is a wildcard
             indicating to attempt negotiation for all AFI/SAFIs.
      ]]></artwork>
@@ -242,7 +242,7 @@ BGP Peering Address Sub-TLV is shown below.
           <t>
 The BGP Config OS-TLV Local AS Sub-TLV will be used to advertise the 4-octet
 local Autonomous System (AS) number(s). For AS transitions, a second local
-AS number may be specified. The format of the 
+AS number may be specified. The format of the
 BGP Local AS Sub-TLV is shown below.
 
           </t>
@@ -252,20 +252,20 @@ BGP Local AS Sub-TLV is shown below.
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | Type (2)      |Length (4 or 8)|         Local AS              |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |   Local AS                    | Optional Second Local AS      |    
+   |   Local AS                    | Optional Second Local AS      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | Optional Second Local AS      |    
+   | Optional Second Local AS      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
     Type             The Sub-TLV Type value shall be 2.
 
-    Length           The Sub-TLV Length will be 4 or 8 octets. 
+    Length           The Sub-TLV Length will be 4 or 8 octets.
 
     Local AS         Local Autonomous System (AS)
 
     Second Local AS  Local Autonomous System (AS)
-                                  
+
      ]]></artwork>
           <t/>
         </section>
@@ -273,7 +273,7 @@ BGP Local AS Sub-TLV is shown below.
           <name>BGP Config OS-TLV - BGP Identifier Sub-TLV</name>
           <t>
 The BGP Config OS-TLV BGP Identifier Sub-TLV will be used to advertise the 4-octet
-local BGP Identifier. The BGP Identifier is used for debugging purposes and 
+local BGP Identifier. The BGP Identifier is used for debugging purposes and
 possibly to reduce the likelihood of BGP connection collisions.
 The format of the BGP Identifier Sub-TLV is shown below.
 
@@ -290,10 +290,10 @@ The format of the BGP Identifier Sub-TLV is shown below.
 
     Type            The Sub-TLV Type value shall be 3.
 
-    Length          The Sub-TLV Length will be 4 octets. 
+    Length          The Sub-TLV Length will be 4 octets.
 
     BGP Identifier  Local BGP Identifier (aka, BGP Router ID)
-                                  
+
      ]]></artwork>
           <t/>
         </section>
@@ -301,8 +301,8 @@ The format of the BGP Identifier Sub-TLV is shown below.
           <name>BGP Config OS-TLV - Session Group-ID Sub-TLV</name>
           <t>
 The BGP Config OS-TLV Session Group-ID Sub-TLV is an opaque 4-octet value
-that is used to represent a category of BGP session that is supported on the 
-interface. 
+that is used to represent a category of BGP session that is supported on the
+interface.
 The format of the Session Group-ID Sub-TLV is shown below.
 
           </t>
@@ -318,12 +318,12 @@ The format of the Session Group-ID Sub-TLV is shown below.
 
     Type              The Sub-TLV Type value shall be 4.
 
-    Length            The Sub-TLV Length will be 4 octets. 
+    Length            The Sub-TLV Length will be 4 octets.
 
-    Session Group-ID  The session group-id used to indicate a 
+    Session Group-ID  The session group-id used to indicate a
                       class or category of BGP session supported on
-                      the interface. 
-                                  
+                      the interface.
+
      ]]></artwork>
           <t/>
         </section>
@@ -331,11 +331,11 @@ The format of the Session Group-ID Sub-TLV is shown below.
           <name>BGP Config OS-TLV - BGP Session Capabilities Sub-TLV</name>
           <t>
 The BGP Config OS-TLV Session Capabilities Sub-TLV will be used to advertise
-an 8-octet Session Capabilities field. The session capabilities are 
+an 8-octet Session Capabilities field. The session capabilities are
 represented as bit flags
 identifying the supported BGP session capabilities. The format of the
 BGP Session Capabilities Sub-TLV is shown below.
- 
+
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
     0                   1                   2                   3
@@ -345,17 +345,17 @@ BGP Session Capabilities Sub-TLV is shown below.
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                Session Capabilities                           |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |  Session Capabilities         |    
+   |  Session Capabilities         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
     Type          The Sub-TLV Type value shall be 5.
 
-    Length        The Sub-TLV Length will be 8 octets. 
-    
+    Length        The Sub-TLV Length will be 8 octets.
+
     Session       Bit fields identify BGP session capabilities
     Capabilities
-                                  
+
      ]]></artwork>
           <t>
   The BGP Session Capabilities is an 8-octet bit field. The most significant bit is
@@ -364,19 +364,19 @@ BGP Session Capabilities Sub-TLV is shown below.
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
 
-     Bit 1:   This bit indicates support for TCP MD5 
+     Bit 1:   This bit indicates support for TCP MD5
               authentication [TCP-MD5].
 
-     Bit 2:   This bit indicates support for TCP-AO 
+     Bit 2:   This bit indicates support for TCP-AO
               authentication [TCP-AO].
 
-     Bit 3:   This bit indicates support for Generalized TTL 
-              Security Mechanism (GTSM) [GTSM] with a 
-              configured TTL range of 254-255. 
+     Bit 3:   This bit indicates support for Generalized TTL
+              Security Mechanism (GTSM) [GTSM] with a
+              configured TTL range of 254-255.
      ]]></artwork>
           <t>TCP MD5 authentication is described in <xref target="RFC2385" format="default"/>.
 The TCP Authentication Option (TCP-AO) is described in <xref target="RFC5925" format="default"/>.
-The Generalized TTL Security Mechanism (GTSM) is described in 
+The Generalized TTL Security Mechanism (GTSM) is described in
 <xref target="RFC5082" format="default"/>. If both TCP MD5 authentication and TCP-AO authentication
 are specified and TCP-AO is supported, it will take precedence.
 </t>
@@ -385,11 +385,11 @@ are specified and TCP-AO is supported, it will take precedence.
           <name>BGP Config OS-TLV - Key Chain Sub-TLV</name>
           <t>
 The BGP Config OS-TLV Key Chain Sub-TLV is a string specifying the name for
-the key chain used for session authentication. Key chains 
-<xref target="RFC8177" format="default"/> are a commonly used for protocol authentication 
+the key chain used for session authentication. Key chains
+<xref target="RFC8177" format="default"/> are a commonly used for protocol authentication
 and encryption key specification. Given the limited length of all BGP configuration
 information, the key chain name will be limited to 64 characters and will not
-include a trailing string delimiter. The format of the Session Group-ID Sub-TLV is 
+include a trailing string delimiter. The format of the Session Group-ID Sub-TLV is
 shown below.
 
           </t>
@@ -403,18 +403,19 @@ shown below.
                                  O
                                  O
                                  O
-   |    Key Chain Name             |            
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                             O                                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
 
 
     Type              The Sub-TLV Type value shall be 6.
 
-    Length            The Sub-TLV Length will be 1 - 64 octets. 
+    Length            The Sub-TLV Length will be 1 - 64 octets.
 
     Key Chain Name    The name of a key chain to be used for
-                      MD5 or TCP-AO authentication. 
-        
-                                  
+                      MD5 or TCP-AO authentication.
+
+
      ]]></artwork>
           <t/>
         </section>
@@ -423,9 +424,9 @@ shown below.
           <t>
 The BGP OS-TLV Local Address Sub-TLV will be used to advertise
 a local IP addresses used for BGP next-hops. Advertising a local interface
-address is useful when the address family is different from the advertised 
+address is useful when the address family is different from the advertised
 BGP peering address.</t>
-          <t>The format of the 
+          <t>The format of the
 BGP Local Interface Address Sub-TLV is shown below.
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
@@ -440,13 +441,13 @@ BGP Local Interface Address Sub-TLV is shown below.
   Type      The Sub-TLV Type value shall be 7.
 
   Length    The Sub-TLV length in octets will be 4 for IPv4 or 16
-            for IPv6 plus 3 times the number of AFI/SAFI tuples. 
+            for IPv6 plus 3 times the number of AFI/SAFI tuples.
 
-  Address  IANA Address family (1 for IPv4 or 2 for IPv6)  
+  Address  IANA Address family (1 for IPv4 or 2 for IPv6)
   Family
 
   Local   An IPv4 address (4 octets) or an IPv6 address (16 octets)
-  Address    
+  Address
     ]]></artwork>
           <t/>
         </section>
@@ -458,7 +459,7 @@ a monotonically increasing version. This version will indicate if any local
 BGP state that may impact BGP session establishment has changed. Changes can
 range from anything as obvious a change in local peering address to more indirect
 changes such as the modification of the key-chain being advertised.</t>
-          <t>The format of the 
+          <t>The format of the
 BGP State Version Sub-TLV is shown below.
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
@@ -473,13 +474,13 @@ BGP State Version Sub-TLV is shown below.
 
     Type               The Sub-TLV Type value shall be 8.
 
-    Length             The Sub-TLV Length will be 4 octets. 
+    Length             The Sub-TLV Length will be 4 octets.
 
     BGP State Version  BGP State Version - Monotonically increasing
                        version number indicating if any local state
                        that may effect BGP session establishment has
-                       changed.  
-                                  
+                       changed.
+
     ]]></artwork>
           <t/>
         </section>
@@ -487,36 +488,36 @@ BGP State Version Sub-TLV is shown below.
     </section>
     <section numbered="true" toc="default">
       <name>BGP LLDP Peer Discovery Operations</name>
-      <t>The simple use case is to just use the peer address advertised in the 
-LLDP Packet Data Unit (PDU) to establish a 1-hop BGP peer session. 
+      <t>The simple use case is to just use the peer address advertised in the
+LLDP Packet Data Unit (PDU) to establish a 1-hop BGP peer session.
 This can be
 used in data centers using BGP as described in <xref target="RFC7938" format="default"/>.
-The use case where a loopback address or other local address is 
-advertised as the peering address is also supported. However, reachabiliy 
-to a peering address other than the interface address is beyond the 
+The use case where a loopback address or other local address is
+advertised as the peering address is also supported. However, reachabiliy
+to a peering address other than the interface address is beyond the
 scope of this document.</t>
       <section numbered="true" toc="default">
         <name>Advertising BGP Speaker</name>
         <t>A BGP speaker MAY advertise its BGP peering address in an LLDP PDU for
-a link using the BGP Local Address Sub-TLV of the BGP-OS TLV. This can be 
-an IPv4 or IPv6 local address associated with the LLDP link for 1-hop peering. 
-For 2-hop peering, it could be a loopback address or any other address that 
+a link using the BGP Local Address Sub-TLV of the BGP-OS TLV. This can be
+an IPv4 or IPv6 local address associated with the LLDP link for 1-hop peering.
+For 2-hop peering, it could be a loopback address or any other address that
 is local to the node but not the LLDP link. As noted above, reachability
 to the loopback address is beyond the scope of this document.</t>
         <t>
-A BGP speaker MAY advertise its local AS number using the BGP 
+A BGP speaker MAY advertise its local AS number using the BGP
 Local AS Sub-TLV of the BGP-OS TLV. During AS transitions, a second
-local AS number may be included in the Local AS Sub-TLV. 
+local AS number may be included in the Local AS Sub-TLV.
 The local BGP identifier may
 also be advertised using the BGP Identifier Sub-TLV of the BGP-OS TLV.
-While not specifically required for session establishment, the values 
-may be used for validation, trouble-shooting, and connection 
-collision avoidance. A BGP speaker may also announce a Session Group-ID 
-indicating the class or category of session(s) supported and/or mapping 
-to a set of session parameters. Additionally, a BGP speaker MAY 
-also announce 
-relevant capabilities using BGP Session Capabilities Sub-TLV of 
-the BGP-OS TLV. 
+While not specifically required for session establishment, the values
+may be used for validation, trouble-shooting, and connection
+collision avoidance. A BGP speaker may also announce a Session Group-ID
+indicating the class or category of session(s) supported and/or mapping
+to a set of session parameters. Additionally, a BGP speaker MAY
+also announce
+relevant capabilities using BGP Session Capabilities Sub-TLV of
+the BGP-OS TLV.
 </t>
         <t>If TCP MD5 authentication <xref target="RFC2385" format="default"/>
 or TCP Authentication Option (TCP-AO) <xref target="RFC5925" format="default"/> is to
@@ -526,45 +527,45 @@ used to specify the key chain name.
       </section>
       <section numbered="true" toc="default">
         <name>Receiving BGP Speaker</name>
-        <t>A BGP speaker configured for LLDP peer discovery WILL attempt to 
+        <t>A BGP speaker configured for LLDP peer discovery WILL attempt to
 establish BGP sessions using the address in the BGP Local Address Sub-TLV
-of BGP-OS TLV format. 
-If the peering address is directly accessible over the link on 
+of BGP-OS TLV format.
+If the peering address is directly accessible over the link on
 which the LLDP PDU is received, the BGP speaker will
 attempt to establish a 1-hop BGP session with the peer.
 </t>
         <t>If the received BGP Peering Address is not directly accessible
-over the link, the peer must be reachable for the session to be 
-established and the mechanisms for establishing reachability are 
-beyond the scope of this specification. 
-If the BGP speaker receives the same BGP peering address in LLDP PDUs 
-received on multiple links, it will not establish multiple sessions. 
+over the link, the peer must be reachable for the session to be
+established and the mechanisms for establishing reachability are
+beyond the scope of this specification.
+If the BGP speaker receives the same BGP peering address in LLDP PDUs
+received on multiple links, it will not establish multiple sessions.
 Rather, a single 2-hop session will be established.</t>
         <t>
 When the deployment of address families is fairly homogenous across
 the deployment, the wildcard AFI/SAFI can be utilized to simplify
-LLDP advertisement. When there is variance in the address families 
+LLDP advertisement. When there is variance in the address families
 supported, usage of the wildcard could result in session establishment
-delay due to capabilities negotiation <xref target="RFC5492" format="default"/>. 
+delay due to capabilities negotiation <xref target="RFC5492" format="default"/>.
 </t>
         <t>
 A BGP speaker MAY receive a remote neighbor's local AS number(s) in
-an LLDP PDU in the BGP Local AS Sub-TLV of the BGP-OS TLV. A BGP speaker 
-MAY use the received local AS number(s) to perform validation checking 
-of the AS received in the OPEN message. A BGP speaker MAY receive a remote 
-neighbor's BGP Identifier in the BGP Identifier Sub-TLV of the 
-BGP-OS TLV. This can be used to avoid connection collisions by 
-delaying session establishment if the remote BGP Identifier is 
-greater than the receiving speaker's BGP Identifier. 
+an LLDP PDU in the BGP Local AS Sub-TLV of the BGP-OS TLV. A BGP speaker
+MAY use the received local AS number(s) to perform validation checking
+of the AS received in the OPEN message. A BGP speaker MAY receive a remote
+neighbor's BGP Identifier in the BGP Identifier Sub-TLV of the
+BGP-OS TLV. This can be used to avoid connection collisions by
+delaying session establishment if the remote BGP Identifier is
+greater than the receiving speaker's BGP Identifier.
 </t>
-        <t> 
-A BGP speaker MAY receive a Session Group-ID Sub-TLV in the LLDP 
+        <t>
+A BGP speaker MAY receive a Session Group-ID Sub-TLV in the LLDP
 BGP-OS TLV. This Session Group-ID may be used for validation and/or
-mapping the session to a particular set of session parameters. 
-For example, the Session Group-ID could be mapped to a spine, 
-leaf, or Top-of-Rack (ToR) session in a data center deployment and 
-can be used to detect cabling problems when an unexpected Session 
-Group-ID is received. 
+mapping the session to a particular set of session parameters.
+For example, the Session Group-ID could be mapped to a spine,
+leaf, or Top-of-Rack (ToR) session in a data center deployment and
+can be used to detect cabling problems when an unexpected Session
+Group-ID is received.
 </t>
         <t>
 Additionally, A BGP speaker MAY
@@ -574,11 +575,11 @@ the received capabilities to ensure appropriate local neighbor
 configuration in order to facilitate session establishment.
 </t>
         <t>If TCP MD5 authentication <xref target="RFC2385" format="default"/>.
-or TCP Authentication Option (TCP-AO) <xref target="RFC5925" format="default"/> is to be 
-used on the session as determined either via the Session 
-Capabilities Sub-TLV, Session Group-ID, or local policy, the 
+or TCP Authentication Option (TCP-AO) <xref target="RFC5925" format="default"/> is to be
+used on the session as determined either via the Session
+Capabilities Sub-TLV, Session Group-ID, or local policy, the
 key chain name in the Key Chain Sub-TLV of the BGP-OS TLV MAY be
-used to identify the correct key chain <xref target="RFC8177" format="default"/>. 
+used to identify the correct key chain <xref target="RFC8177" format="default"/>.
 </t>
         <t>
   The BGP State Version associated with the LLDP peer SHOULD be retained
@@ -621,17 +622,17 @@ Message Authentication Code (GMAC) if only authentication, but not encryption is
       <t>
 The MACsec Key Agreement (MKA) is included as part of the IEEE 802.1X-20200 Port-Based Network Access
 Control Standard <xref target="MKA" format="default"/>. The purpose of MKA is to provide a method for discovering MACsec
- peers and negotiating the security keys needed to secure the link. 
+ peers and negotiating the security keys needed to secure the link.
 </t>
     </section>
     <section numbered="true" toc="default">
       <name>Security Considerations</name>
       <t>
-This security considerations for BGP <xref target="RFC4271" format="default"/> apply 
+This security considerations for BGP <xref target="RFC4271" format="default"/> apply
 equally to this extension.</t>
       <t>
-Additionally, BGP peering address discovery should only be done on 
-trusted links (e.g., in a data center network) since LLDP packets are 
+Additionally, BGP peering address discovery should only be done on
+trusted links (e.g., in a data center network) since LLDP packets are
 not authenticated or encrypted <xref target="LLDP" format="default"/>.</t>
       <t>LLDP Authentication and/or encryption can provided as described in
  section <xref target="AUTH-ENCRYPT" format="default"/>.</t>
@@ -648,13 +649,10 @@ not authenticated or encrypted <xref target="LLDP" format="default"/>.</t>
       </section>
       <section numbered="true" toc="default">
         <name>BGP Config LLDP OS-TLV Sub-TLVs</name>
-        <t>IANA is requested to create a registry for Sub-TLVs of the BGP 
-      Config LLDP OS-TLV. Assignment is requested
-      for 1 for the BGP Peering Address Sub-TLV. Assignment is
-      also requested for 2 for the Local AS Sub-TLV. Additionally, 
-      assignment is requested for 3 for the BGP Identifier Sub-TLV,
-      4 for the BGP Session Group-ID, 5 for the 
-      Session Capabilities Sub-TLV, and 6 for the Key Chain Name.
+        <t>
+          IANA is requested to create a registry for Sub-TLVs of the BGP
+          Config LLDP OS-TLV. Assignments are requested as specified in the table
+          below.
         </t>
         <figure>
           <name>LLDP BGP Config OS-TLV Types</name>
@@ -702,7 +700,7 @@ not authenticated or encrypted <xref target="LLDP" format="default"/>.</t>
     </section>
     <section numbered="true" toc="default">
       <name>Contributors</name>
-      <artwork name="" type="" align="left" alt=""><![CDATA[  
+      <artwork name="" type="" align="left" alt=""><![CDATA[
 Contributors' Addresses
 
 ]]></artwork>
@@ -713,59 +711,9 @@ Contributors' Addresses
       <name>References</name>
       <references>
         <name>Normative References</name>
-        <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
-          <front>
-            <title>Key words for use in RFCs to Indicate Requirement Levels</title>
-            <author initials="S." surname="Bradner" fullname="S. Bradner">
-              <organization/>
-            </author>
-            <date year="1997" month="March"/>
-            <abstract>
-              <t>In many standards track documents several words are used to signify the requirements in the specification.  These words are often capitalized. This document defines these words as they should be interpreted in IETF documents.  This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="BCP" value="14"/>
-          <seriesInfo name="RFC" value="2119"/>
-          <seriesInfo name="DOI" value="10.17487/RFC2119"/>
-        </reference>
-        <reference anchor="RFC4271" target="https://www.rfc-editor.org/info/rfc4271" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4271.xml">
-          <front>
-            <title>A Border Gateway Protocol 4 (BGP-4)</title>
-            <author initials="Y." surname="Rekhter" fullname="Y. Rekhter" role="editor">
-              <organization/>
-            </author>
-            <author initials="T." surname="Li" fullname="T. Li" role="editor">
-              <organization/>
-            </author>
-            <author initials="S." surname="Hares" fullname="S. Hares" role="editor">
-              <organization/>
-            </author>
-            <date year="2006" month="January"/>
-            <abstract>
-              <t>This document discusses the Border Gateway Protocol (BGP), which is an inter-Autonomous System routing protocol.</t>
-              <t>The primary function of a BGP speaking system is to exchange network reachability information with other BGP systems.  This network reachability information includes information on the list of Autonomous Systems (ASes) that reachability information traverses. This information is sufficient for constructing a graph of AS connectivity for this reachability from which routing loops may be pruned, and, at the AS level, some policy decisions may be enforced.</t>
-              <t>BGP-4 provides a set of mechanisms for supporting Classless Inter-Domain Routing (CIDR).  These mechanisms include support for advertising a set of destinations as an IP prefix, and eliminating the concept of network "class" within BGP.  BGP-4 also introduces mechanisms that allow aggregation of routes, including aggregation of AS paths.</t>
-              <t>This document obsoletes RFC 1771.  [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="4271"/>
-          <seriesInfo name="DOI" value="10.17487/RFC4271"/>
-        </reference>
-        <reference anchor="RFC8174" target="https://www.rfc-editor.org/info/rfc8174" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml">
-          <front>
-            <title>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</title>
-            <author initials="B." surname="Leiba" fullname="B. Leiba">
-              <organization/>
-            </author>
-            <date year="2017" month="May"/>
-            <abstract>
-              <t>RFC 2119 specifies common key words that may be used in protocol  specifications.  This document aims to reduce the ambiguity by clarifying that only UPPERCASE usage of the key words have the  defined special meanings.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="BCP" value="14"/>
-          <seriesInfo name="RFC" value="8174"/>
-          <seriesInfo name="DOI" value="10.17487/RFC8174"/>
-        </reference>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.2119.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.4271.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.8174.xml"/>
         <reference anchor="LLDP">
           <front>
             <title>IEEE Standard for Local and metropolitan area networks-- Station and Media Access Control Connectivity Discovery Corrigendum 2: Technical and Editorial Corrections</title>
@@ -807,7 +755,7 @@ Contributors' Addresses
               <t>
        Port-based network access control allows a network administrator to restrict the use of
        IEEE 802 LAN service access points (ports) to secure communication between authenticated and
-       authorized devices. This standard specifies a common architecture, functional elements, and  
+       authorized devices. This standard specifies a common architecture, functional elements, and
        protocols that support mutual authentication between the clients of ports attached to the same LAN
        and that secure communication between the ports, including the media access method
        independent protocols that are used to discover and establish the security associations used by
@@ -820,196 +768,24 @@ Contributors' Addresses
       </references>
       <references>
         <name>Informative References</name>
-        <reference anchor="RFC2385" target="https://www.rfc-editor.org/info/rfc2385" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2385.xml">
-          <front>
-            <title>Protection of BGP Sessions via the TCP MD5 Signature Option</title>
-            <author initials="A." surname="Heffernan" fullname="A. Heffernan">
-              <organization/>
-            </author>
-            <date year="1998" month="August"/>
-            <abstract>
-              <t>This memo describes a TCP extension to enhance security for BGP. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="2385"/>
-          <seriesInfo name="DOI" value="10.17487/RFC2385"/>
-        </reference>
-        <reference anchor="RFC4760" target="https://www.rfc-editor.org/info/rfc4760" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4760.xml">
-          <front>
-            <title>Multiprotocol Extensions for BGP-4</title>
-            <author initials="T." surname="Bates" fullname="T. Bates">
-              <organization/>
-            </author>
-            <author initials="R." surname="Chandra" fullname="R. Chandra">
-              <organization/>
-            </author>
-            <author initials="D." surname="Katz" fullname="D. Katz">
-              <organization/>
-            </author>
-            <author initials="Y." surname="Rekhter" fullname="Y. Rekhter">
-              <organization/>
-            </author>
-            <date year="2007" month="January"/>
-            <abstract>
-              <t>This document defines extensions to BGP-4 to enable it to carry routing information for multiple Network Layer protocols (e.g., IPv6, IPX, L3VPN, etc.).  The extensions are backward compatible - a router that supports the extensions can interoperate with a router that doesn't support the extensions.  [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="4760"/>
-          <seriesInfo name="DOI" value="10.17487/RFC4760"/>
-        </reference>
-        <reference anchor="RFC5082" target="https://www.rfc-editor.org/info/rfc5082" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5082.xml">
-          <front>
-            <title>The Generalized TTL Security Mechanism (GTSM)</title>
-            <author initials="V." surname="Gill" fullname="V. Gill">
-              <organization/>
-            </author>
-            <author initials="J." surname="Heasley" fullname="J. Heasley">
-              <organization/>
-            </author>
-            <author initials="D." surname="Meyer" fullname="D. Meyer">
-              <organization/>
-            </author>
-            <author initials="P." surname="Savola" fullname="P. Savola" role="editor">
-              <organization/>
-            </author>
-            <author initials="C." surname="Pignataro" fullname="C. Pignataro">
-              <organization/>
-            </author>
-            <date year="2007" month="October"/>
-            <abstract>
-              <t>The use of a packet's Time to Live (TTL) (IPv4) or Hop Limit (IPv6) to verify whether the packet was originated by an adjacent node on a connected link has been used in many recent protocols.  This document generalizes this technique.  This document obsoletes Experimental RFC 3682.  [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="5082"/>
-          <seriesInfo name="DOI" value="10.17487/RFC5082"/>
-        </reference>
-        <reference anchor="RFC5226" target="https://www.rfc-editor.org/info/rfc5226" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5226.xml">
-          <front>
-            <title>Guidelines for Writing an IANA Considerations Section in RFCs</title>
-            <author initials="T." surname="Narten" fullname="T. Narten">
-              <organization/>
-            </author>
-            <author initials="H." surname="Alvestrand" fullname="H. Alvestrand">
-              <organization/>
-            </author>
-            <date year="2008" month="May"/>
-            <abstract>
-              <t>Many protocols make use of identifiers consisting of constants and other well-known values.  Even after a protocol has been defined and deployment has begun, new values may need to be assigned (e.g., for a new option type in DHCP, or a new encryption or authentication transform for IPsec).  To ensure that such quantities have consistent values and interpretations across all implementations, their assignment must be administered by a central authority.  For IETF protocols, that role is provided by the Internet Assigned Numbers Authority (IANA).</t>
-              <t>In order for IANA to manage a given namespace prudently, it needs guidelines describing the conditions under which new values can be assigned or when modifications to existing values can be made.  If IANA is expected to play a role in the management of a namespace, IANA must be given clear and concise instructions describing that role.  This document discusses issues that should be considered in formulating a policy for assigning values to a namespace and provides guidelines for authors on the specific text that must be included in documents that place demands on IANA.</t>
-              <t>This document obsoletes RFC 2434.  This document specifies an Internet Best  Current Practices for the Internet Community, and requests discussion and  suggestions for improvements.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="5226"/>
-          <seriesInfo name="DOI" value="10.17487/RFC5226"/>
-        </reference>
-        <reference anchor="RFC5492" target="https://www.rfc-editor.org/info/rfc5492" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5492.xml">
-          <front>
-            <title>Capabilities Advertisement with BGP-4</title>
-            <author initials="J." surname="Scudder" fullname="J. Scudder">
-              <organization/>
-            </author>
-            <author initials="R." surname="Chandra" fullname="R. Chandra">
-              <organization/>
-            </author>
-            <date year="2009" month="February"/>
-            <abstract>
-              <t>This document defines an Optional Parameter, called Capabilities, that is expected to facilitate the introduction of new capabilities in the Border Gateway Protocol (BGP) by providing graceful capability advertisement without requiring that BGP peering be terminated.</t>
-              <t>This document obsoletes RFC 3392.  [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="5492"/>
-          <seriesInfo name="DOI" value="10.17487/RFC5492"/>
-        </reference>
-        <reference anchor="RFC5925" target="https://www.rfc-editor.org/info/rfc5925" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5925.xml">
-          <front>
-            <title>The TCP Authentication Option</title>
-            <author initials="J." surname="Touch" fullname="J. Touch">
-              <organization/>
-            </author>
-            <author initials="A." surname="Mankin" fullname="A. Mankin">
-              <organization/>
-            </author>
-            <author initials="R." surname="Bonica" fullname="R. Bonica">
-              <organization/>
-            </author>
-            <date year="2010" month="June"/>
-            <abstract>
-              <t>This document specifies the TCP Authentication Option (TCP-AO), which obsoletes the TCP MD5 Signature option of RFC 2385 (TCP MD5).  TCP-AO specifies the use of stronger Message Authentication Codes (MACs), protects against replays even for long-lived TCP connections, and provides more details on the association of security with TCP connections than TCP MD5.  TCP-AO is compatible with either a static Master Key Tuple (MKT) configuration or an external, out-of-band MKT management mechanism; in either case, TCP-AO also protects connections when using the same MKT across repeated instances of a connection, using traffic keys derived from the MKT, and coordinates MKT changes between endpoints.  The result is intended to support current infrastructure uses of TCP MD5, such as to protect long-lived connections (as used, e.g., in BGP and LDP), and to support a larger set of MACs with minimal other system and operational changes.  TCP-AO uses a different option identifier than TCP MD5, even though TCP-AO and TCP MD5 are never permitted to be used simultaneously.  TCP-AO supports IPv6, and is fully compatible with the proposed requirements for the replacement of TCP MD5.  [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="5925"/>
-          <seriesInfo name="DOI" value="10.17487/RFC5925"/>
-        </reference>
-        <reference anchor="RFC7042" target="https://www.rfc-editor.org/info/rfc7042" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7042.xml">
-          <front>
-            <title>IANA Considerations and IETF Protocol and Documentation Usage for IEEE 802 Parameters</title>
-            <author initials="D." surname="Eastlake 3rd" fullname="D. Eastlake 3rd">
-              <organization/>
-            </author>
-            <author initials="J." surname="Abley" fullname="J. Abley">
-              <organization/>
-            </author>
-            <date year="2013" month="October"/>
-            <abstract>
-              <t>Some IETF protocols make use of Ethernet frame formats and IEEE 802 parameters.  This document discusses several uses of such parameters in IETF protocols, specifies IANA considerations for assignment of points under the IANA OUI (Organizationally Unique Identifier), and provides some values for use in documentation. This document obsoletes RFC 5342.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="BCP" value="141"/>
-          <seriesInfo name="RFC" value="7042"/>
-          <seriesInfo name="DOI" value="10.17487/RFC7042"/>
-        </reference>
-        <reference anchor="RFC7938" target="https://www.rfc-editor.org/info/rfc7938" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7938.xml">
-          <front>
-            <title>Use of BGP for Routing in Large-Scale Data Centers</title>
-            <author initials="P." surname="Lapukhov" fullname="P. Lapukhov">
-              <organization/>
-            </author>
-            <author initials="A." surname="Premji" fullname="A. Premji">
-              <organization/>
-            </author>
-            <author initials="J." surname="Mitchell" fullname="J. Mitchell" role="editor">
-              <organization/>
-            </author>
-            <date year="2016" month="August"/>
-            <abstract>
-              <t>Some network operators build and operate data centers that support over one hundred thousand servers.  In this document, such data centers are referred to as "large-scale" to differentiate them from smaller infrastructures.  Environments of this scale have a unique set of network requirements with an emphasis on operational simplicity and network stability.  This document summarizes operational experience in designing and operating large-scale data centers using BGP as the only routing protocol.  The intent is to report on a proven and stable routing design that could be leveraged by others in the industry.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="7938"/>
-          <seriesInfo name="DOI" value="10.17487/RFC7938"/>
-        </reference>
-        <reference anchor="RFC8177" target="https://www.rfc-editor.org/info/rfc8177" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8177.xml">
-          <front>
-            <title>YANG Data Model for Key Chains</title>
-            <author initials="A." surname="Lindem" fullname="A. Lindem" role="editor">
-              <organization/>
-            </author>
-            <author initials="Y." surname="Qu" fullname="Y. Qu">
-              <organization/>
-            </author>
-            <author initials="D." surname="Yeung" fullname="D. Yeung">
-              <organization/>
-            </author>
-            <author initials="I." surname="Chen" fullname="I. Chen">
-              <organization/>
-            </author>
-            <author initials="J." surname="Zhang" fullname="J. Zhang">
-              <organization/>
-            </author>
-            <date year="2017" month="June"/>
-            <abstract>
-              <t>This document describes the key chain YANG data model.  Key chains are commonly used for routing protocol authentication and other applications requiring symmetric keys.  A key chain is a list containing one or more elements containing a Key ID, key string, send/accept lifetimes, and the associated authentication or encryption algorithm.  By properly overlapping the send and accept lifetimes of multiple key chain elements, key strings and algorithms may be gracefully updated.  By representing them in a YANG data model, key distribution can be automated.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="8177"/>
-          <seriesInfo name="DOI" value="10.17487/RFC8177"/>
-        </reference>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.2385.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.4760.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5082.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5226.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5492.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5925.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.7042.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.7938.xml"/>
+        <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.8177.xml"/>
       </references>
     </references>
     <section numbered="true" toc="default">
       <name>Acknowledgments</name>
       <t>Thanks to Sujay Gupta and Paul Congdon for review and comments.</t>
-      <t>Thanks to Donald Eastlake for guidance on IANA LLDP TLV Subtype assignment.</t>
+      <t>
+        Thanks to Donald Eastlake for guidance on IANA LLDP TLV Subtype assignment.
+        Thanks to Dan Romascanu for review of the IANA considerations.
+      </t>
     </section>
   </back>
 </rfc>
