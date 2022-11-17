@@ -38,7 +38,7 @@
   <front>
     <title abbrev="BGP LLDP Peer Discovery">
    BGP Logical Link Discovery Protocol (LLDP) Peer Discovery</title>
-    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-13"/>
+    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-14"/>
     <author initials="A." surname="Lindem" fullname="Acee Lindem">
       <organization>Cisco Systems</organization>
       <address>
