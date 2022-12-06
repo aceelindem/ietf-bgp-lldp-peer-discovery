@@ -33,7 +33,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-13" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-14" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
   <!-- xml2rfc v2v3 conversion 3.12.1 -->
   <front>
     <title abbrev="BGP LLDP Peer Discovery">
@@ -592,23 +592,32 @@ used to identify the correct key chain <xref target="RFC8177" format="default"/>
       <section numbered="true" toc="default">
         <name>Updating or Deleting Auto-Discovery Parameters</name>
         <t>
-    A BGP speaker MAY change or delete any BGP LLDP auto-discovery parameter
-    by simply updating or removing the corresponding Sub-TLV previously
-    advertised in the BGP-OS TLV.
-    Additionally, the BGP State Version Sub-TLV should be advertised with
-    the version incremented from the previous version. The BGP
-    speaker(s) receiving the advertisement will update or delete the
-    changed or deleted auto-discovery parameters. However, there will be no
-    change to existing BGP sessions with the advertising BGP Speaker.
-    Changes to existing BGP sessions are the purview
-    of the BGP protocol and are beyond the scope of this document.
+          A BGP speaker MAY change or delete any BGP LLDP auto-discovery parameter
+          by simply updating or removing the corresponding Sub-TLV previously
+          advertised in the BGP-OS TLV.
+          Additionally, the BGP State Version Sub-TLV should be advertised with
+          the version incremented from the previous version. The BGP
+          speaker(s) receiving the advertisement will update or delete the
+          changed or deleted auto-discovery parameters. However, there will be no
+          change to existing BGP sessions with the advertising BGP Speaker.
+          Changes to existing BGP sessions are the purview
+          of the BGP protocol and are beyond the scope of this document.
         </t>
         <t>
-    Since LLDP information is cumulative, reception of an LLDP PDU without the
-    BGP-OS TLV indicates that BGP LLDP auto-discovery has been disabled for the
-    BGP speaker and all parameters learnt during BGP LLDP auto-discovery
-    SHOULD be deleted. As above, changes to existing BGP sessions are
-    beyond the scope of this document.
+          Since LLDP information is cumulative, reception of an LLDP PDU without the
+          BGP-OS TLV indicates that BGP LLDP auto-discovery has been disabled for the
+          BGP speaker and all parameters learnt during BGP LLDP auto-discovery
+          SHOULD be deleted. As above, changes to existing BGP sessions are
+          beyond the scope of this document.
+        </t>
+        <t>
+          The LLDP Multi-Frame extension <xref target="LLDP-MULTIFRAME"/> removes
+          the limit on a LLDP PDU being fitting in a single layer 2 frame. This will
+          increase the number of TLVs which can be contained in LLDP PDU and the
+          applicablity of LLDP as a BGP discovery protocol. The specificaiton of the
+          LLDP API for BGP and other applications is beyond the scope of this document.
+          However, it is RECOMMENDED that the LLDP BGP TLVs only be delivered to BGP
+          when a complete LLDP PDU is received.
         </t>
       </section>
     </section>
@@ -744,6 +753,25 @@ Contributors' Addresses
           </front>
           <seriesInfo name="IEEE" value="Standard 802.1AE-2018"/>
         </reference>
+        <reference anchor="LLDP-MULTIFRAME">
+          <front>
+            <title>IEEE Standard for Local and metropolitan area networks-- Station and Media Access Control Connectivity Discovery Amendment 2: Support for Multiframe Protocol Data Units</title>
+            <author>
+              <organization>IEEE</organization>
+            </author>
+            <date day="19" month="April" year="2022"/>
+            <abstract>
+              <t>
+                This amendment to the IEEE Std 802.1AB(TM)-2016 specifies protocols, procedures, and managed
+                objects that support the transmission and reception o fa set of Link Layer Discovery Protocol
+                (LLDP) Type/Lenth/Values (TLVs) that exceed teh space available in a single frame.
+              </t>
+            </abstract>
+          </front>
+          <seriesInfo name="IEEE" value="802.1ABdh-2021"/>
+          <seriesInfo name="DOI" value="10.1109/IEEESTD.2022.9760302"/>
+        </reference>
+
         <reference anchor="MKA">
           <front>
             <title>IEEE Standard for Local and metropolitan area networks - Port Based Network Access Control</title>
