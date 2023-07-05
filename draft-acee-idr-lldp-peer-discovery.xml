@@ -33,12 +33,12 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-15" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-16" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
   <!-- xml2rfc v2v3 conversion 3.12.1 -->
   <front>
     <title abbrev="BGP LLDP Peer Discovery">
    BGP Logical Link Discovery Protocol (LLDP) Peer Discovery</title>
-    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-15"/>
+    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-16"/>
     <author initials="A." surname="Lindem" fullname="Acee Lindem">
       <organization>LabN Consulting LLC</organization>
       <address>
@@ -85,9 +85,9 @@
       </address>
     </author>
     <author initials="X." surname="Xu" fullname="Xiaohu Xu">
-      <organization>Capitalonline</organization>
+      <organization>China Mobile</organization>
       <address>
-        <email>xiaohu.xu@capitalonline.net</email>
+        <email>13910161692@qq.com</email>
       </address>
     </author>
     <date/>
