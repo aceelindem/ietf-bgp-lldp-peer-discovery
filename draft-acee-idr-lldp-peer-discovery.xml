@@ -712,7 +712,6 @@ not authenticated or encrypted <xref target="LLDP" format="default"/>.</t>
 Contributors' Addresses
 
 ]]></artwork>
-      <t>Test reference to <xref target="IEEE754-2019"/>.</t>
     </section>
   </middle>
   <back>
@@ -723,18 +722,6 @@ Contributors' Addresses
         <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.2119.xml"/>
         <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.4271.xml"/>
         <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.8174.xml"/>
-        <reference anchor="IEEE754-2019">
-          <front>
-            <title>IEEE Standard for Floating-Point Arithmetic</title>
-            <author>
-              <organization>Institute of Electrical and Electronics Engineers</organization>
-            </author>
-            <date day="22" month="July" year="2019"/>
-          </front>
-          <seriesInfo name="IEEE" value="754-2019"/>
-          <seriesInfo name="DOI" value="10.1109/ieeestd.2019.8766229"/>
-          <format type="HTML" target="https://ieeexplore.ieee.org/document/8766220"/>
-        </reference>
         <reference anchor="LLDP">
           <front>
             <title>IEEE Standard for Local and metropolitan area networks-- Station and Media Access Control Connectivity Discovery Corrigendum 2: Technical and Editorial Corrections</title>
