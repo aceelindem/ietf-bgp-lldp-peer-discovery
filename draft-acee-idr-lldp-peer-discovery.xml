@@ -7,7 +7,6 @@
 ]>
 <!-- This template is for creating an Internet Draft using xml2rfc,
     which is available here: http://xml.resource.org. -->
-<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
 <!-- For a complete list and description of processing instructions (PIs),
     please see http://xml.resource.org/authoring/README.html. -->
@@ -33,14 +32,14 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-19" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" ipr="trust200902" docName="draft-acee-idr-lldp-peer-discovery-20" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" tocDepth="4" symRefs="true" sortRefs="true" version="3" consensus="true">
   <!-- xml2rfc v2v3 conversion 3.12.1 -->
   <front>
     <title abbrev="BGP LLDP Peer Discovery">
-   BGP Logical Link Discovery Protocol (LLDP) Peer Discovery</title>
-    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-19"/>
+    BGP Logical Link Discovery Protocol (LLDP) Peer Discovery</title>
+    <seriesInfo name="Internet-Draft" value="draft-acee-idr-lldp-peer-discovery-20"/>
     <author initials="A." surname="Lindem" fullname="Acee Lindem">
-      <organization>LabN Consulting, L.L.C.</organization>
+      <organization>Arrcus, Inc</organization>
       <address>
         <postal>
           <street>301 Midenhall Way</street>
@@ -713,6 +712,7 @@ not authenticated or encrypted <xref target="LLDP" format="default"/>.</t>
 Contributors' Addresses
 
 ]]></artwork>
+      <t>Test reference to <xref target="IEEE754-2019"/>.</t>
     </section>
   </middle>
   <back>
@@ -723,6 +723,18 @@ Contributors' Addresses
         <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.2119.xml"/>
         <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.4271.xml"/>
         <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.8174.xml"/>
+        <reference anchor="IEEE754-2019">
+          <front>
+            <title>IEEE Standard for Floating-Point Arithmetic</title>
+            <author>
+              <organization>Institute of Electrical and Electronics Engineers</organization>
+            </author>
+            <date day="22" month="July" year="2019"/>
+          </front>
+          <seriesInfo name="IEEE" value="754-2019"/>
+          <seriesInfo name="DOI" value="10.1109/ieeestd.2019.8766229"/>
+          <format type="HTML" target="https://ieeexplore.ieee.org/document/8766220"/>
+        </reference>
         <reference anchor="LLDP">
           <front>
             <title>IEEE Standard for Local and metropolitan area networks-- Station and Media Access Control Connectivity Discovery Corrigendum 2: Technical and Editorial Corrections</title>
