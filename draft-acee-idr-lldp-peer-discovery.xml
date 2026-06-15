@@ -58,29 +58,15 @@
       </address>
     </author>
     <author initials="S." surname="Zandi" fullname="Shawn Zandi">
-      <organization>LinkedIn</organization>
+      <organization></organization>
       <address>
-        <postal>
-          <street>222 2nd Street</street>
-          <city>San Francisco</city>
-          <region>CA</region>
-          <country>USA</country>
-          <code>94105</code>
-        </postal>
-        <email>szandi@linkedin.com</email>
+        <email>shafagh@shafagh.com</email>
       </address>
     </author>
-    <author initials="J." surname="Haas" fullname="Jeff Haas">
-      <organization>Juniper Networks, Inc</organization>
+    <author initials="J." surname="Haas" fullname="Jeffrey Haas">
+      <organization>HPE</organization>
       <address>
-        <postal>
-          <street>1133 Innovation, Inc.</street>
-          <city>Sunnyvale</city>
-          <region>CA</region>
-          <country>USA</country>
-          <code>94089</code>
-        </postal>
-        <email>jhaas@juniper.net</email>
+        <email>jeffrey.haas@hpe.com</email>
       </address>
     </author>
     <author initials="X." surname="Xu" fullname="Xiaohu Xu">
